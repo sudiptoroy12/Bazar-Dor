@@ -133,7 +133,7 @@ const UserInfo = () => {
           </Link>
 
           <Link href="/signup">
-            <button className="btn bg-green-600 px-3 py-1.5 font-semibold text-white transition-colors hover:bg-green-700">
+            <button className="btn bg-green-600 px-3 py-1.5 font-semibold text-white transition-colors hover:bg-green-700 rounded-xl">
               সাইন আপ
             </button>
           </Link>
