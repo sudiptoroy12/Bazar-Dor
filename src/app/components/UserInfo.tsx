@@ -127,13 +127,13 @@ const UserInfo = () => {
         /* Not logged in */
         <div className="flex items-center gap-2">
           <Link href="/signin">
-            <button className="btn btn-ghost text-neutral-700 transition-colors hover:text-red-700">
+            <button className="btn btn-ghost text-neutral-700 transition-colors hover:text--700">
               সাইন ইন
             </button>
           </Link>
 
           <Link href="/signup">
-            <button className="btn bg-red-700 px-3 py-1.5 font-semibold text-white transition-colors hover:bg-red-800">
+            <button className="btn bg-green-600 px-3 py-1.5 font-semibold text-white transition-colors hover:bg-green-700">
               সাইন আপ
             </button>
           </Link>

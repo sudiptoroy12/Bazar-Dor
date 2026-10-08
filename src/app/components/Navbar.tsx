@@ -1,14 +1,31 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+
 import UserInfo from "./UserInfo";
 
 const Navbar = () => {
+  const [date, setDate] = useState<string>("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDate(
+        new Date().toLocaleDateString("bn-BD", {
+          dateStyle: "full",
+        })
+      );
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="w-full border-b border-neutral-200">
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
         {/* Left side */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center bg-green-600 p-2">
+          <div className="flex items-center justify-center rounded-2xl bg-green-600 p-2">
             <Image
               src="/logo-icon.png"
               alt="Bazar Dor Logo"
@@ -18,7 +35,15 @@ const Navbar = () => {
             />
           </div>
 
-          <span className="text-2xl font-bold">বাজার দর</span>
+          <div className="flex flex-col items-center sm:items-start">
+            <span className="text-2xl font-bold">
+              বাজার দর
+            </span>
+
+            <span className="text-xs text-neutral-500">
+              {date}
+            </span>
+          </div>
         </div>
 
         {/* Right side */}
