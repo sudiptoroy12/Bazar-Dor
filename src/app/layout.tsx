@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
 import Marquee from "./components/Marquee";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         
         <main className="max-w-7xl mx-auto">{children}</main>
          <ToastContainer />
+         <Footer/>
       
       </body>
     </html>

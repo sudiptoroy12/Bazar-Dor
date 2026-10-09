@@ -76,7 +76,7 @@ const ProductDashboard = async () => {
         products={decreasedProducts}
       />
 
-      <section>
+      <section id="all-products">
         <div className="mb-4">
           <h2 className="text-base font-bold text-[#202a22]">
             সব পণ্য

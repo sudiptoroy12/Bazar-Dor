@@ -38,7 +38,7 @@ const HeroBanner = () => {
           </p>
 
           <Link
-            href="/products"
+            href="#all-products"
             className="mt-6 inline-flex items-center gap-2 rounded-lg bg-green-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-green-800"
           >
             সব পণ্য দেখুন

@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
@@ -14,6 +15,25 @@ interface Headline {
   };
 }
 
+const formatBanglaNumber = (value: number) =>
+  value.toLocaleString("bn-BD", {
+    maximumFractionDigits: 2,
+  });
+
+const getBanglaUnit = (unit: string) => {
+  const units: Record<string, string> = {
+    kg: "কেজি",
+    g: "গ্রাম",
+    liter: "লিটার",
+    l: "লিটার",
+    piece: "টি",
+    dozen: "ডজন",
+    bag: "বস্তা",
+  };
+
+  return units[unit.toLowerCase()] ?? unit;
+};
+
 const Marquee = async () => {
   const res = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/products",
@@ -23,6 +43,10 @@ const Marquee = async () => {
       },
     }
   );
+
+  if (!res.ok) {
+    throw new Error("পণ্যের তথ্য লোড করা যায়নি");
+  }
 
   const headlines: Headline[] = await res.json();
 
@@ -41,45 +65,35 @@ const Marquee = async () => {
             <Link
               key={item.id}
               href={`/products/${item.id}`}
-              className="
-                flex h-9 items-center
-                whitespace-nowrap
-                border-r border-neutral-200
-                px-4
-                text-sm
-                transition
-                hover:bg-neutral-50
-              "
+              className="flex h-9 items-center whitespace-nowrap border-r border-neutral-200 px-4 text-sm transition hover:bg-neutral-50"
             >
-              {/* Icon */}
-              <span className="mr-2 text-sm">
-                {item.image}
-              </span>
+              {/* Product icon */}
+              <span className="mr-2">{item.image}</span>
 
               {/* Product name */}
               <span className="mr-2 font-medium text-neutral-700">
                 {item.nameBn}
               </span>
 
-              {/* Price */}
+              {/* Price and unit */}
               <span className="mr-2 font-semibold text-neutral-800">
-               {item.today} TK/{item.unit}
+                {formatBanglaNumber(item.today)} টাকা/
+                {getBanglaUnit(item.unit)}
               </span>
 
-              {/* Change */}
+              {/* Price change */}
               {item.change.dir === "flat" ? (
                 <span className="font-semibold text-neutral-500">
                   — ০%
                 </span>
               ) : (
                 <span
-                  className={`font-semibold flex gap-1 ${
+                  className={`flex gap-1 font-semibold ${
                     isUp ? "text-red-500" : "text-green-600"
-                  }`} 
+                  }`}
                 >
-                    <span>{isUp ? "▲" : "▼"} </span>
-                  
-                   {Math.abs(item.change.pct)}%
+                  <span>{isUp ? "▲" : "▼"}</span>
+                  {formatBanglaNumber(Math.abs(item.change.pct))}%
                 </span>
               )}
             </Link>
