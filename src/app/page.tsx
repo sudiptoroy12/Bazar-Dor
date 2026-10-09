@@ -1,11 +1,14 @@
-import Image from "next/image";
+
+import HeroBanner from "./components/HeroBanner";
+import ProductDashboard from "./components/ProductDashboard";
 
 export default function Home() {
   return (
-      <div>
-        Home page
+      <>
+        <HeroBanner/>
+        <ProductDashboard />
         
-      </div>
+      </>
   
   );
 }

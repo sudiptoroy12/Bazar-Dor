@@ -63,7 +63,7 @@ const Marquee = async () => {
 
               {/* Price */}
               <span className="mr-2 font-semibold text-neutral-800">
-                ৳{item.today} TK/{item.unit}
+               {item.today} TK/{item.unit}
               </span>
 
               {/* Change */}

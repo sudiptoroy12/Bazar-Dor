@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import UserInfo from "./UserInfo";
+import Link from "next/link";
 
 const Navbar = () => {
   const [date, setDate] = useState<string>("");
@@ -24,7 +25,8 @@ const Navbar = () => {
     <div className="w-full border-b border-neutral-200">
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
         {/* Left side */}
-        <div className="flex items-center gap-2">
+        
+            <Link href="/" className="flex items-center gap-2">
           <div className="flex items-center justify-center rounded-2xl bg-green-600 p-2">
             <Image
               src="/logo-icon.png"
@@ -44,7 +46,8 @@ const Navbar = () => {
               {date}
             </span>
           </div>
-        </div>
+        </Link>
+    
 
         {/* Right side */}
         <UserInfo />
