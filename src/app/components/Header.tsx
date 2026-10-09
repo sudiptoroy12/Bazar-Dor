@@ -1,6 +1,7 @@
 
 
-import NavLinks from "./NavLinks";
+
+import NavLinksServer from "./NavLinksServer";
 
 import Navbar from "./Navbar";
 
@@ -8,7 +9,7 @@ const Header = () => {
   return (
     <header className=" ">
       <Navbar/>
-      <NavLinks />
+      <NavLinksServer />
     </header>
   );
 };
