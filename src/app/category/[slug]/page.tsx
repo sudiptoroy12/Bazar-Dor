@@ -1,6 +1,7 @@
 import { Suspense } from "react";
-import { notFound } from "next/navigation";
+
 import ProductGrid from "./ProductGrid";
+import Link from "next/link";
 
 interface Product {
   id: number;
@@ -45,9 +46,35 @@ async function CategoryContent({ params }: Props) {
   const { slug } = await params;
   const products = await getProducts(slug);
 
-  if (products.length === 0) {
-    notFound();
-  }
+
+    if (products.length === 0) {
+  return (
+    <main className="flex min-h-[60vh] items-center justify-center bg-[#f1f5f0] px-4 py-12">
+      <div className="w-full max-w-md rounded-2xl border border-[#dfe7df] bg-white p-8 text-center shadow-sm">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-50 text-3xl">
+          🔎
+        </div>
+
+        <h1 className="text-2xl font-bold text-[#202a22]">
+          ৪০৪ — ক্যাটাগরি পাওয়া যায়নি
+        </h1>
+
+        <p className="mt-3 text-sm leading-6 text-neutral-500">
+          দুঃখিত! এই ক্যাটাগরিতে কোনো পণ্য পাওয়া যায়নি।
+          ক্যাটাগরির ঠিকানা যাচাই করুন অথবা হোম পেজে ফিরে যান।
+        </p>
+
+        <Link
+          href="/"
+          className="mt-6 inline-flex items-center justify-center rounded-xl bg-green-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+        >
+          ← হোম পেজে ফিরে যান
+        </Link>
+      </div>
+    </main>
+  );
+}
+  
 
   const category = products[0];
 

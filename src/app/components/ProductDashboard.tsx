@@ -56,11 +56,11 @@ const ProductDashboard = async () => {
 
   const increasedProducts = products.filter(
     (product) => product.change.dir === "up"
-  );
+  ).slice(0, 6); // Limit to 6 products
 
   const decreasedProducts = products.filter(
     (product) => product.change.dir === "down"
-  );
+  ).slice(0, 6); // Limit to 6 products
 
   return (
     <main className="mx-auto max-w-7xl space-y-7 px-4 py-6 sm:px-6">
