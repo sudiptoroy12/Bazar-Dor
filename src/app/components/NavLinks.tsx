@@ -15,7 +15,7 @@ const NavLinks = ({ navs }: { navs: Navs[] }) => {
 
   return (
     <nav className="w-full border-b border-neutral-200 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl  px-4 sm:px-6 lg:px-8">
         {/* Desktop navigation */}
         <div className="hidden min-h-12 items-center gap-6 md:flex">
           {navs.map((n) => (

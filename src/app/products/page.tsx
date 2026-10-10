@@ -142,7 +142,7 @@ export default function ProductsPage() {
   ).length;
 
   return (
-    <main className="min-h-screen bg-[#f7f9f7] px-4 py-8 sm:px-6 lg:px-8">
+    <main className="min-h-screen   px-4 py-6 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Breadcrumb */}
         <nav className="mb-5 flex items-center gap-2 text-sm text-gray-500">

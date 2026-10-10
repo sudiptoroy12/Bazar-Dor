@@ -19,8 +19,8 @@ const HeroBanner = () => {
   }, []);
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-4">
-      <div className="flex min-h-[250px] flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border border-green-100 bg-[#f8fbf8] p-6 sm:p-8 md:flex-row">
+    <section className="mx-auto max-w-7xl  px-4 py-6 sm:px-6 lg:px-8">
+      <div className="flex min-h-[250px] flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border border-green-100 bg-white p-6 sm:p-8 md:flex-row">
         {/* Left content */}
         <div className="w-full md:w-3/5">
           <span className="inline-flex rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">

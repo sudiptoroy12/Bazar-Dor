@@ -22,8 +22,8 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="w-full border-b border-neutral-200">
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+    <div className="w-full border-b border-neutral-200 bg-white">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between  px-4 py-4 sm:px-6 lg:px-8">
         {/* Left side */}
         
             <Link href="/" className="flex items-center gap-2">

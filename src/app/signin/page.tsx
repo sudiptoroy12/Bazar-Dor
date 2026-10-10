@@ -38,24 +38,42 @@ const SignInPage = () => {
     setLoading(false);
   };
 
-  // Google Sign In
-  const handleGoogleLogin = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/",
-    });
-  };
 
-  // GitHub Sign In
-  const handleGithubLogin = async () => {
-    await authClient.signIn.social({
-      provider: "github",
-      callbackURL: "/",
+// Google Login
+const handleGoogleLogin = async () => {
+  try {
+    const { error } = await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/?socialLogin=success",
     });
-  };
+
+    if (error) {
+      toast.error(error.message || "Google login failed!");
+    }
+  } catch {
+    toast.error("Something went wrong with Google login.");
+  }
+};
+
+// GitHub Login
+const handleGithubLogin = async () => {
+  try {
+    const { error } = await authClient.signIn.social({
+      provider: "github",
+      callbackURL: "/?socialLogin=success",
+    });
+
+    if (error) {
+      toast.error(error.message || "GitHub login failed!");
+    }
+  } catch {
+    toast.error("Something went wrong with GitHub login.");
+  }
+};
+
 
   return (
-    <div className="min-h-screen bg-[#f3f8f4] flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen  flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
 
         {/* Heading */}

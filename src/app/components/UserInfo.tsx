@@ -114,7 +114,7 @@ const UserInfo = () => {
                 onClick={handleSignout}
                 className="flex w-full items-center gap-3 px-7 py-4 text-left text-lg text-red-500 transition hover:bg-red-50"
               >
-                <span className="text-2xl">↪</span>
+                <span className="text-2xl ">↪</span>
                 <span>সাইন আউট</span>
               </button>
             </div>
@@ -122,7 +122,7 @@ const UserInfo = () => {
         </div>
       ) : (
         /* Not logged in */
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <Link href="/signin">
             <button className="btn btn-ghost text-neutral-700 transition-colors hover:text--700">
               সাইন ইন

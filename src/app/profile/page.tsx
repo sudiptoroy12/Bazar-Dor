@@ -69,7 +69,7 @@ const ProfilePage = () => {
 
   if (!user) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f4f8f4] px-4">
+      <main className="flex min-h-screen items-center justify-center  px-4">
         <div className="rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-sm">
           <h1 className="text-xl font-semibold text-neutral-800">
             আপনার অ্যাকাউন্টে সাইন ইন করা নেই
@@ -87,7 +87,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <main className="min-h-screen bg-[#f4f8f4] px-4 py-10">
+    <main className="min-h-screen  px-4 py-10">
       <div className="mx-auto max-w-5xl">
         {/* Page Header */}
         <div>

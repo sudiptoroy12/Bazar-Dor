@@ -1,8 +1,8 @@
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t border-neutral-200 bg-[#f1f5f0]">
-      <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6">
+    <footer className="w-full border-t border-neutral-200 bg-white">
+      <div className="mx-auto max-w-7xl  px-4 py-6 sm:px-6 lg:px-8">
         {/* Footer text */}
         <div className="flex flex-col items-center justify-between gap-2 text-center text-xs text-neutral-500 sm:flex-row sm:text-sm">
           <p>

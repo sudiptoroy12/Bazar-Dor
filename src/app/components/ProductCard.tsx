@@ -35,7 +35,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <Link
       href={`/products/${id}`}
-      className="block rounded-2xl border border-[#dfe8e0] bg-[#f9fcf9] p-3 transition hover:border-green-300 hover:shadow-sm sm:p-4"
+      className="block rounded-2xl border border-[#dfe8e0] bg-white p-3 transition hover:border-green-300 hover:shadow-sm sm:p-4"
     >
       {/* Product name and image */}
       <div className="flex items-center gap-3">

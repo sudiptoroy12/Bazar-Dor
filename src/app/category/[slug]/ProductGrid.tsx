@@ -87,7 +87,7 @@ export default function ProductGrid({
           <Link
             key={product.id}
             href={`/products/${product.id}`}
-            className="rounded-2xl border border-[#dfe7df] bg-[#fbfcfb] p-3 transition hover:border-green-300 hover:shadow-sm"
+            className="rounded-2xl border border-[#dfe7df] bg-white p-3 transition hover:border-green-300 hover:shadow-sm"
           >
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f0f4ef] text-xl">

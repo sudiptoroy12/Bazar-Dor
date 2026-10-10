@@ -51,7 +51,7 @@ async function CategoryContent({ params }: Props) {
 
   if (products.length === 0) {
     return (
-      <main className="flex min-h-[60vh] items-center justify-center bg-[#f1f5f0] px-4 py-12">
+      <main className="flex min-h-[60vh] items-center justify-center   px-4 py-6 sm:px-6 lg:px-8">
         <div className="w-full max-w-md rounded-2xl border border-[#dfe7df] bg-white p-8 text-center shadow-sm">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-50 text-3xl">
             🔎
@@ -80,10 +80,10 @@ async function CategoryContent({ params }: Props) {
   const category = products[0];
 
   return (
-    <main className="min-h-screen bg-[#f1f5f0] px-3 py-5 sm:px-6">
+    <main className="min-h-screen  px-3 py-5 sm:px-6">
       <div className="mx-auto max-w-7xl space-y-5">
-        <section className="flex items-center gap-3 rounded-2xl border border-[#dfe7df] bg-[#fbfcfb] px-4 py-4 sm:px-6">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#f0f4ef] text-2xl">
+        <section className="flex items-center gap-3 rounded-2xl border border-[#dfe7df] bg-white px-4 py-4 sm:px-6">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-2xl">
             {category.categoryIcon}
           </div>
 

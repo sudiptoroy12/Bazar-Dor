@@ -4,6 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { SignupSkeleton } from "../components/SignupSkeleton";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -60,22 +61,38 @@ const SignUpPage = () => {
 
   // Google Login
   const handleGoogleLogin = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/",
-    });
+    try {
+      const { error } = await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/?socialLogin=success",
+      });
+
+      if (error) {
+        toast.error(error.message || "Google login failed!");
+      }
+    } catch {
+      toast.error("Something went wrong with Google login.");
+    }
   };
 
   // GitHub Login
   const handleGithubLogin = async () => {
-    await authClient.signIn.social({
-      provider: "github",
-      callbackURL: "/",
-    });
+    try {
+      const { error } = await authClient.signIn.social({
+        provider: "github",
+        callbackURL: "/?socialLogin=success",
+      });
+
+      if (error) {
+        toast.error(error.message || "GitHub login failed!");
+      }
+    } catch {
+      toast.error("Something went wrong with GitHub login.");
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#f3f8f4] flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
         {/* Heading */}
         <div className="text-center mb-6">
@@ -90,114 +107,103 @@ const SignUpPage = () => {
 
         {/* Signup Card */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 sm:p-7">
-          <form onSubmit={onSubmit} className="space-y-4">
-            {/* Name */}
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                নাম
-              </label>
-
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                placeholder="যেমন: রহিম উদ্দিন"
-                className="w-full h-11 px-4 rounded-lg border border-gray-200
-                bg-white text-gray-800 placeholder:text-gray-400
-                outline-none transition
-                focus:border-green-600 focus:ring-2 focus:ring-green-100"
-              />
-            </div>
-
-            {/* Email */}
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                ইমেইল
-              </label>
-
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                placeholder="you@example.com"
-                className="w-full h-11 px-4 rounded-lg border border-gray-200
-                bg-white text-gray-800 placeholder:text-gray-400
-                outline-none transition
-                focus:border-green-600 focus:ring-2 focus:ring-green-100"
-              />
-            </div>
-
-            {/* Password */}
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                পাসওয়ার্ড
-              </label>
-
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                placeholder="কমপক্ষে ৮ অক্ষর"
-                className="w-full h-11 px-4 rounded-lg border border-gray-200
-                bg-white text-gray-800 placeholder:text-gray-400
-                outline-none transition
-                focus:border-green-600 focus:ring-2 focus:ring-green-100"
-              />
-            </div>
-
-            {/* Confirm Password */}
-            <div>
-              <label
-                htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                পাসওয়ার্ড নিশ্চিত করুন
-              </label>
-
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                required
-                placeholder="আবার লিখুন"
-                className="w-full h-11 px-4 rounded-lg border border-gray-200
-                bg-white text-gray-800 placeholder:text-gray-400
-                outline-none transition
-                focus:border-green-600 focus:ring-2 focus:ring-green-100"
-              />
-            </div>
-
-            {/* Error */}
-            {errorMessage && (
-              <div className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-4 py-3">
-                {errorMessage}
+          {loading ? (
+            <SignupSkeleton />
+          ) : (
+            <form onSubmit={onSubmit} className="space-y-4">
+              {/* Name */}
+              <div>
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-sm font-medium text-gray-700"
+                >
+                  নাম
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="যেমন: রহিম উদ্দিন"
+                  className="h-11 w-full rounded-lg border border-gray-200 px-4 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                />
               </div>
-            )}
 
-            {/* Signup Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full h-11 rounded-lg bg-green-600 hover:bg-green-700
-              text-white font-medium transition duration-200
-              disabled:opacity-60 disabled:cursor-not-allowed
-              shadow-sm"
-            >
-              {loading ? "অ্যাকাউন্ট তৈরি হচ্ছে..." : "অ্যাকাউন্ট তৈরি করুন"}
-            </button>
-          </form>
+              {/* Email */}
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mb-2 block text-sm font-medium text-gray-700"
+                >
+                  ইমেইল
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="you@example.com"
+                  className="h-11 w-full rounded-lg border border-gray-200 px-4 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                />
+              </div>
+
+              {/* Password */}
+              <div>
+                <label
+                  htmlFor="password"
+                  className="mb-2 block text-sm font-medium text-gray-700"
+                >
+                  পাসওয়ার্ড
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  minLength={8}
+                  placeholder="কমপক্ষে ৮ অক্ষর"
+                  className="h-11 w-full rounded-lg border border-gray-200 px-4 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                />
+              </div>
+
+              {/* Confirm Password */}
+              <div>
+                <label
+                  htmlFor="confirmPassword"
+                  className="mb-2 block text-sm font-medium text-gray-700"
+                >
+                  পাসওয়ার্ড নিশ্চিত করুন
+                </label>
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  required
+                  minLength={8}
+                  placeholder="আবার লিখুন"
+                  className="h-11 w-full rounded-lg border border-gray-200 px-4 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                />
+              </div>
+
+              {/* Inline error */}
+              {errorMessage && (
+                <div
+                  role="alert"
+                  className="rounded-lg border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-600"
+                >
+                  {errorMessage}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="h-11 w-full rounded-lg bg-green-600 font-medium text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                অ্যাকাউন্ট তৈরি করুন
+              </button>
+            </form>
+          )}
 
           {/* Divider */}
           <div className="flex items-center gap-4 my-5">
@@ -251,7 +257,7 @@ const SignUpPage = () => {
             </button>
           </p>
         </div>
-         {/* Back to Home */}
+        {/* Back to Home */}
         <button
           type="button"
           onClick={() => router.push("/")}
