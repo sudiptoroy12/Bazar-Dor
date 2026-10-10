@@ -13,7 +13,7 @@ const ProfilePage = () => {
   const [show, setShow] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 
-  const handleUpdateProfile = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdateProfile = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setIsUpdating(true);
