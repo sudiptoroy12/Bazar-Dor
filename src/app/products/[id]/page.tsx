@@ -35,7 +35,7 @@ type PageProps = {
 };
 
 const API_URL =
-  "https://api.api-store.workers.dev/api/bazardor/products";
+  "https://openapi.programming-hero.com/api/bazardor/products";
 
 const unitNames: Record<string, string> = {
   kg: "কেজি",

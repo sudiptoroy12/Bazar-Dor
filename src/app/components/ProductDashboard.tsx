@@ -2,7 +2,7 @@
 import ProductCard, { type Product } from "./ProductCard";
 
 const API_URL =
-  "https://api.api-store.workers.dev/api/bazardor/products";
+  "https://openapi.programming-hero.com/api/bazardor/products";
 
 async function getProducts(): Promise<Product[]> {
   const res = await fetch(API_URL, {

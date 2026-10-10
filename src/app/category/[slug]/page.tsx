@@ -28,7 +28,7 @@ type Props = {
 
 async function getProducts(slug: string): Promise<Product[]> {
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products?category=${encodeURIComponent(slug)}`,
+    `https://openapi.programming-hero.com/api/bazardor/products?category=${encodeURIComponent(slug)}`,
     { cache: "no-store" }
   );
 
