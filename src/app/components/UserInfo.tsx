@@ -5,10 +5,13 @@ import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import Image from "next/image";
+import UserInfoSkeleton from "./UserInfoSkeleton";
 
 const UserInfo = () => {
-  const { data: session } = authClient.useSession();
+  const { data: session , isPending } = authClient.useSession();
+ 
   const user = session?.user;
+
 
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -31,17 +34,29 @@ const UserInfo = () => {
     };
   }, []);
 
-  const handleSignout = async () => {
-    await authClient.signOut();
+const handleSignout = async () => {
+  try {
+    const { error } = await authClient.signOut();
+
+    if (error) {
+      toast.error(error.message || "সাইন আউট করা যায়নি");
+      return;
+    }
 
     setIsOpen(false);
-
     toast.success("সফলভাবে সাইন আউট হয়েছে!");
-  };
+  } catch {
+    toast.error("সাইন আউট করার সময় সমস্যা হয়েছে");
+  }
+};
+
 
   return (
     <div ref={dropdownRef} className="absolute right-4 top-3 z-50">
-      {user ? (
+      {isPending ? (
+        <UserInfoSkeleton />
+      ) : 
+      user ? (
         <div className="relative">
           {/* Profile Button */}
           <button
@@ -123,17 +138,16 @@ const UserInfo = () => {
       ) : (
         /* Not logged in */
         <div className="flex items-center gap-4">
-          <Link href="/signin">
-            <button className="btn btn-ghost text-neutral-700 transition-colors hover:text--700">
+          
+            <Link href="/signin" className="btn btn-ghost text-neutral-700 transition-colors hover:text--700">
               সাইন ইন
-            </button>
-          </Link>
+            </Link>
+         
 
-          <Link href="/signup">
-            <button className="btn bg-green-600 px-3 py-1.5 font-semibold text-white transition-colors hover:bg-green-700 rounded-xl">
+            <Link href="/signup" className="btn bg-green-600 px-3 py-1.5 font-semibold text-white transition-colors hover:bg-green-700 rounded-xl">
               সাইন আপ
-            </button>
-          </Link>
+            </Link>
+          
         </div>
       )}
     </div>
