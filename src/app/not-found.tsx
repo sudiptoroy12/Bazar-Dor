@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 export default function NotFound() {
@@ -38,8 +37,8 @@ export default function NotFound() {
         </h1>
 
         <p className="mx-auto mt-5 max-w-lg text-base leading-7 text-gray-600 sm:text-lg">
-          মনে হচ্ছে আপনি ভুল পথে চলে এসেছেন! আপনি যে পেজটি খুঁজছেন,
-          সেটি সরানো হয়েছে অথবা এর ঠিকানাটি ভুল।
+          মনে হচ্ছে আপনি ভুল পথে চলে এসেছেন! আপনি যে পেজটি খুঁজছেন, সেটি সরানো
+          হয়েছে অথবা এর ঠিকানাটি ভুল।
         </p>
 
         {/* Buttons */}
@@ -63,8 +62,8 @@ export default function NotFound() {
         {/* Footer note */}
         <div className="mt-12 border-t border-green-100 pt-6">
           <p className="text-sm text-gray-500">
-            <span className="font-bold text-green-700">বাজার দর</span>
-            {" "}— প্রতিদিনের বাজারদর, এক জায়গায়।
+            <span className="font-bold text-green-700">বাজার দর</span> —
+            প্রতিদিনের বাজারদর, এক জায়গায়।
           </p>
         </div>
       </div>

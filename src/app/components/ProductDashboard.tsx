@@ -1,8 +1,6 @@
-
 import ProductCard, { type Product } from "./ProductCard";
 
-const API_URL =
-  "https://openapi.programming-hero.com/api/bazardor/products";
+const API_URL = "https://openapi.programming-hero.com/api/bazardor/products";
 
 async function getProducts(): Promise<Product[]> {
   const res = await fetch(API_URL, {
@@ -22,21 +20,13 @@ interface ProductGroupProps {
   products: Product[];
 }
 
-function ProductGroup({
-  title,
-  icon,
-  products,
-}: ProductGroupProps) {
+function ProductGroup({ title, icon, products }: ProductGroupProps) {
   if (products.length === 0) return null;
 
   return (
     <section>
       <h2 className="mb-3 flex items-center gap-2 text-base font-bold text-[#202a22]">
-        <span
-          className={
-            icon === "▲" ? "text-red-500" : "text-green-600"
-          }
-        >
+        <span className={icon === "▲" ? "text-red-500" : "text-green-600"}>
           {icon}
         </span>
         {title}
@@ -54,13 +44,13 @@ function ProductGroup({
 const ProductDashboard = async () => {
   const products = await getProducts();
 
-  const increasedProducts = products.filter(
-    (product) => product.change.dir === "up"
-  ).slice(0, 6); // Limit to 6 products
+  const increasedProducts = products
+    .filter((product) => product.change.dir === "up")
+    .slice(0, 6); // Limit to 6 products
 
-  const decreasedProducts = products.filter(
-    (product) => product.change.dir === "down"
-  ).slice(0, 6); // Limit to 6 products
+  const decreasedProducts = products
+    .filter((product) => product.change.dir === "down")
+    .slice(0, 6); // Limit to 6 products
 
   return (
     <main className="mx-auto max-w-7xl space-y-7 px-4 py-6 sm:px-6">
@@ -78,9 +68,7 @@ const ProductDashboard = async () => {
 
       <section id="all-products">
         <div className="mb-4">
-          <h2 className="text-base font-bold text-[#202a22]">
-            সব পণ্য
-          </h2>
+          <h2 className="text-base font-bold text-[#202a22]">সব পণ্য</h2>
 
           <p className="mt-1 text-xs text-neutral-500">
             মোট {products.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে
@@ -98,5 +86,3 @@ const ProductDashboard = async () => {
 };
 
 export default ProductDashboard;
-
-

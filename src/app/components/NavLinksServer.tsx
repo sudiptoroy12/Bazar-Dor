@@ -1,4 +1,3 @@
-
 import NavLinks from "./NavLinks";
 
 interface Navs {
@@ -12,7 +11,7 @@ async function getNavs(): Promise<Navs[]> {
   "use cache";
 
   const res = await fetch(
-    "https://openapi.programming-hero.com/api/bazardor/categories"
+    "https://openapi.programming-hero.com/api/bazardor/categories",
   );
 
   if (!res.ok) {

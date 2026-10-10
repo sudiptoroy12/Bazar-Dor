@@ -10,9 +10,6 @@ const UserInfo = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
-  console.log(user);
-  
-
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 

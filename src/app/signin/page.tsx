@@ -32,7 +32,7 @@ const SignInPage = () => {
 
     if (error) {
       toast.error("ইমেইল অথবা পাসওয়ার্ড সঠিক নয়!");
-      console.log(error);
+     
     }
 
     setLoading(false);

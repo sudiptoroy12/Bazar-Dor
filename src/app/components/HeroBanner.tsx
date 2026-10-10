@@ -1,23 +1,23 @@
-'use client';
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const HeroBanner = () => {
-      const [date, setDate] = useState<string>("");
-    
-      useEffect(() => {
-        const timer = setTimeout(() => {
-          setDate(
-            new Date().toLocaleDateString("bn-BD", {
-              dateStyle: "full",
-            })
-          );
-        }, 0);
-    
-        return () => clearTimeout(timer);
-      }, []);
-    
+  const [date, setDate] = useState<string>("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDate(
+        new Date().toLocaleDateString("bn-BD", {
+          dateStyle: "full",
+        }),
+      );
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="mx-auto max-w-7xl px-4 py-4">
       <div className="flex min-h-[250px] flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border border-green-100 bg-[#f8fbf8] p-6 sm:p-8 md:flex-row">
@@ -32,9 +32,8 @@ const HeroBanner = () => {
           </h1>
 
           <p className="mt-4 max-w-xl text-xs leading-5 text-neutral-500 sm:text-sm">
-            চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম —
-            বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন-সর্বোচ্চ এবং
-            দামের পরিবর্তন এক জায়গায়।
+            চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক
+            বিস্তারিত, গড়, সর্বনিম্ন-সর্বোচ্চ এবং দামের পরিবর্তন এক জায়গায়।
           </p>
 
           <Link
@@ -49,7 +48,7 @@ const HeroBanner = () => {
         {/* Right illustration */}
         <div className="relative flex w-full items-center justify-center md:w-2/5">
           <Image
-            src={'/bazar-hero.png'}
+            src={"/bazar-hero.png"}
             alt="বাজারের তাজা সবজি"
             width={260}
             height={220}

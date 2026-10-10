@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 export interface Product {
@@ -58,9 +57,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       {/* Price and percentage */}
       <div className="mt-3 flex items-end justify-between gap-2">
         <div>
-          <p className="text-[11px] text-neutral-500">
-            আজকের দাম
-          </p>
+          <p className="text-[11px] text-neutral-500">আজকের দাম</p>
 
           <p className="mt-0.5 text-base font-bold text-[#202a22]">
             {today.toLocaleString("bn-BD")} টাকা
@@ -77,7 +74,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
           }`}
         >
           {isUp ? "▲" : isDown ? "▼" : "—"}
-
           {Math.abs(change.pct).toLocaleString("bn-BD")}%
         </span>
       </div>
@@ -86,4 +82,3 @@ const ProductCard = ({ product }: ProductCardProps) => {
 };
 
 export default ProductCard;
-

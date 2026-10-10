@@ -13,9 +13,7 @@ const ProfilePage = () => {
   const [show, setShow] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 
-  const handleUpdateProfile = async (
-    e: React.FormEvent<HTMLFormElement>,
-  ) => {
+  const handleUpdateProfile = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setIsUpdating(true);
@@ -93,9 +91,7 @@ const ProfilePage = () => {
       <div className="mx-auto max-w-5xl">
         {/* Page Header */}
         <div>
-          <h1 className="text-3xl font-bold text-neutral-800">
-            আমার প্রোফাইল
-          </h1>
+          <h1 className="text-3xl font-bold text-neutral-800">আমার প্রোফাইল</h1>
 
           <p className="mt-2 text-neutral-500">
             আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।
@@ -132,9 +128,7 @@ const ProfilePage = () => {
                   {user.name}
                 </h2>
 
-                <p className="mt-1 text-lg text-neutral-500">
-                  {user.email}
-                </p>
+                <p className="mt-1 text-lg text-neutral-500">{user.email}</p>
               </div>
             </div>
 
@@ -165,9 +159,7 @@ const ProfilePage = () => {
               </div>
 
               <div>
-                <p className="text-sm font-medium text-neutral-500">
-                  ইমেইল
-                </p>
+                <p className="text-sm font-medium text-neutral-500">ইমেইল</p>
 
                 <p className="mt-2 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 text-neutral-800">
                   {user.email}
@@ -176,10 +168,7 @@ const ProfilePage = () => {
             </div>
           ) : (
             /* Edit Form */
-            <form
-              onSubmit={handleUpdateProfile}
-              className="mt-8 space-y-6"
-            >
+            <form onSubmit={handleUpdateProfile} className="mt-8 space-y-6">
               {/* Name */}
               <div>
                 <label

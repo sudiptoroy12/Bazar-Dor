@@ -1,4 +1,3 @@
-
 import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -34,8 +33,7 @@ type PageProps = {
   params: Promise<{ id: string }>;
 };
 
-const API_URL =
-  "https://openapi.programming-hero.com/api/bazardor/products";
+const API_URL = "https://openapi.programming-hero.com/api/bazardor/products";
 
 const unitNames: Record<string, string> = {
   kg: "কেজি",
@@ -102,8 +100,8 @@ async function ProductDetails({ params }: PageProps) {
       ? Math.round(
           product.markets.reduce(
             (total, market) => total + (market.min + market.max) / 2,
-            0
-          ) / product.markets.length
+            0,
+          ) / product.markets.length,
         )
       : product.today;
 
@@ -144,9 +142,7 @@ async function ProductDetails({ params }: PageProps) {
 
           <span>/</span>
 
-          <span className="font-medium text-gray-800">
-            {product.nameBn}
-          </span>
+          <span className="font-medium text-gray-800">{product.nameBn}</span>
         </nav>
 
         {/* Product Header */}
@@ -166,9 +162,7 @@ async function ProductDetails({ params }: PageProps) {
                   {product.nameBn}
                 </h1>
 
-                <p className="mt-2 text-sm text-gray-500">
-                  প্রতি {unit}
-                </p>
+                <p className="mt-2 text-sm text-gray-500">প্রতি {unit}</p>
               </div>
             </div>
 
@@ -183,8 +177,7 @@ async function ProductDetails({ params }: PageProps) {
                 <span
                   className={`inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-semibold ${priceChangeColor}`}
                 >
-                  {priceChangeIcon}{" "}
-                  {formatPrice(Math.abs(product.change.pct))}%
+                  {priceChangeIcon} {formatPrice(Math.abs(product.change.pct))}%
                 </span>
               </div>
 
@@ -257,28 +250,18 @@ async function ProductDetails({ params }: PageProps) {
               <table className="w-full min-w-[600px] text-left text-sm">
                 <thead className="bg-gray-50 text-gray-600">
                   <tr>
-                    <th className="px-5 py-4 font-semibold">
-                      বাজারের নাম
-                    </th>
-                    <th className="px-5 py-4 font-semibold">
-                      বিভাগ
-                    </th>
-                    <th className="px-5 py-4 font-semibold">
-                      সর্বনিম্ন দাম
-                    </th>
-                    <th className="px-5 py-4 font-semibold">
-                      সর্বোচ্চ দাম
-                    </th>
-                    <th className="px-5 py-4 font-semibold">
-                      গড় দাম
-                    </th>
+                    <th className="px-5 py-4 font-semibold">বাজারের নাম</th>
+                    <th className="px-5 py-4 font-semibold">বিভাগ</th>
+                    <th className="px-5 py-4 font-semibold">সর্বনিম্ন দাম</th>
+                    <th className="px-5 py-4 font-semibold">সর্বোচ্চ দাম</th>
+                    <th className="px-5 py-4 font-semibold">গড় দাম</th>
                   </tr>
                 </thead>
 
                 <tbody className="divide-y divide-gray-100">
                   {product.markets.map((market, index) => {
                     const marketAverage = Math.round(
-                      (market.min + market.max) / 2
+                      (market.min + market.max) / 2,
                     );
 
                     return (
@@ -319,8 +302,8 @@ async function ProductDetails({ params }: PageProps) {
 
           <div className="border-t border-gray-100 px-5 py-3">
             <p className="text-xs text-gray-500">
-              নোট: বাজারের গড় দাম সর্বনিম্ন ও সর্বোচ্চ দামের মধ্যবর্তী
-              মান থেকে হিসাব করা হয়েছে।
+              নোট: বাজারের গড় দাম সর্বনিম্ন ও সর্বোচ্চ দামের মধ্যবর্তী মান থেকে
+              হিসাব করা হয়েছে।
             </p>
           </div>
         </section>

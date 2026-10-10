@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
@@ -41,7 +40,7 @@ const Marquee = async () => {
       next: {
         revalidate: 60,
       },
-    }
+    },
   );
 
   if (!res.ok) {
@@ -52,11 +51,7 @@ const Marquee = async () => {
 
   return (
     <div className="w-full overflow-hidden border-y border-neutral-200 bg-white">
-      <MarqueeText
-        direction="right"
-        duration={10}
-        className="flex w-max"
-      >
+      <MarqueeText direction="right" duration={10} className="flex w-max">
         {headlines.map((item) => {
           const isUp = item.change.dir === "up";
           const isDown = item.change.dir === "down";
@@ -83,9 +78,7 @@ const Marquee = async () => {
 
               {/* Price change */}
               {item.change.dir === "flat" ? (
-                <span className="font-semibold text-neutral-500">
-                  — ০%
-                </span>
+                <span className="font-semibold text-neutral-500">— ০%</span>
               ) : (
                 <span
                   className={`flex gap-1 font-semibold ${

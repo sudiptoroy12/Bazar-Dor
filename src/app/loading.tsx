@@ -1,4 +1,3 @@
-
 export default function Loading() {
   return (
     <main className="min-h-screen animate-pulse bg-[#f1f5f0]">

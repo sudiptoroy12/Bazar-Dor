@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -32,8 +31,7 @@ const filters: { value: PriceFilter; label: string }[] = [
   { value: "flat", label: "— দাম অপরিবর্তিত" },
 ];
 
-const API_URL =
-  "https://api.api-store.workers.dev/api/bazardor/products";
+const API_URL = "https://api.api-store.workers.dev/api/bazardor/products";
 
 const unitNames: Record<string, string> = {
   kg: "কেজি",
@@ -89,7 +87,7 @@ export default function ProductsPage() {
       } catch {
         if (active) {
           setError(
-            "পণ্যের তথ্য লোড করা যায়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।"
+            "পণ্যের তথ্য লোড করা যায়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।",
           );
         }
       } finally {
@@ -108,15 +106,13 @@ export default function ProductsPage() {
     const uniqueCategories = new Map<string, string>();
 
     products.forEach((product) => {
-      uniqueCategories.set(
-        product.category,
-        product.categoryNameBn
-      );
+      uniqueCategories.set(product.category, product.categoryNameBn);
     });
 
-    return Array.from(uniqueCategories.entries()).map(
-      ([value, label]) => ({ value, label })
-    );
+    return Array.from(uniqueCategories.entries()).map(([value, label]) => ({
+      value,
+      label,
+    }));
   }, [products]);
 
   const filteredProducts = useMemo(() => {
@@ -128,23 +124,21 @@ export default function ProductsPage() {
         product.categoryNameBn.toLowerCase().includes(searchText);
 
       const matchesCategory =
-        selectedCategory === "all" ||
-        product.category === selectedCategory;
+        selectedCategory === "all" || product.category === selectedCategory;
 
       const matchesPrice =
-        priceFilter === "all" ||
-        product.change.dir === priceFilter;
+        priceFilter === "all" || product.change.dir === priceFilter;
 
       return matchesSearch && matchesCategory && matchesPrice;
     });
   }, [products, search, selectedCategory, priceFilter]);
 
   const risingCount = products.filter(
-    (product) => product.change.dir === "up"
+    (product) => product.change.dir === "up",
   ).length;
 
   const fallingCount = products.filter(
-    (product) => product.change.dir === "down"
+    (product) => product.change.dir === "down",
   ).length;
 
   return (
@@ -172,8 +166,8 @@ export default function ProductsPage() {
               </h1>
 
               <p className="mt-3 max-w-xl text-sm leading-6 text-green-100 sm:text-base">
-                চাল, ডাল, তেল, সবজি ও অন্যান্য নিত্যপ্রয়োজনীয়
-                পণ্যের দাম দেখুন এক জায়গায়।
+                চাল, ডাল, তেল, সবজি ও অন্যান্য নিত্যপ্রয়োজনীয় পণ্যের দাম দেখুন
+                এক জায়গায়।
               </p>
             </div>
 
@@ -181,18 +175,14 @@ export default function ProductsPage() {
               <div className="rounded-2xl bg-white/10 p-4">
                 <p className="text-sm text-green-100">মোট পণ্য</p>
                 <p className="mt-1 text-2xl font-bold">
-                  {loading
-                    ? "..."
-                    : products.length.toLocaleString("bn-BD")}
+                  {loading ? "..." : products.length.toLocaleString("bn-BD")}
                 </p>
               </div>
 
               <div className="rounded-2xl bg-white/10 p-4">
                 <p className="text-sm text-green-100">দাম বেড়েছে</p>
                 <p className="mt-1 text-2xl font-bold">
-                  {loading
-                    ? "..."
-                    : risingCount.toLocaleString("bn-BD")}
+                  {loading ? "..." : risingCount.toLocaleString("bn-BD")}
                 </p>
               </div>
             </div>
@@ -267,9 +257,7 @@ export default function ProductsPage() {
             <div className="flex flex-col gap-3 sm:flex-row">
               <select
                 value={selectedCategory}
-                onChange={(event) =>
-                  setSelectedCategory(event.target.value)
-                }
+                onChange={(event) => setSelectedCategory(event.target.value)}
                 aria-label="পণ্যের ক্যাটাগরি"
                 className="min-w-40 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
               >
@@ -461,8 +449,7 @@ function ProductCard({ product }: { product: Product }) {
           <span
             className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs font-semibold ${changeStyle}`}
           >
-            {changeIcon}{" "}
-            {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
+            {changeIcon} {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
           </span>
 
           <span className="text-xs font-medium text-green-700 transition group-hover:underline">

@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -99,4 +98,3 @@ const NavLinks = ({ navs }: { navs: Navs[] }) => {
 };
 
 export default NavLinks;
-
