@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-export const instant = false;
+
 
 import ProductGrid from "./ProductGrid";
 import Link from "next/link";

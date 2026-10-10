@@ -31,7 +31,7 @@ const filters: { value: PriceFilter; label: string }[] = [
   { value: "flat", label: "— দাম অপরিবর্তিত" },
 ];
 
-const API_URL = "https://api.api-store.workers.dev/api/bazardor/products";
+const API_URL = "https://openapi.programming-hero.com/api/bazardor/products";
 
 const unitNames: Record<string, string> = {
   kg: "কেজি",
