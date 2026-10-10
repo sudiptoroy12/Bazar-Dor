@@ -20,6 +20,11 @@ interface Product {
 
 type SortOption = "default" | "low" | "high" | "change";
 
+// Use fixed formatting options for consistent number display.
+const numberFormatter = new Intl.NumberFormat("bn-BD", {
+  maximumFractionDigits: 1,
+});
+
 export default function ProductGrid({
   products,
 }: {
@@ -50,7 +55,6 @@ export default function ProductGrid({
 
   return (
     <div>
-      {/* Sorting bar */}
       <div className="flex items-center justify-end gap-2 rounded-2xl border border-[#dfe7df] bg-[#fbfcfb] px-4 py-3">
         <label
           htmlFor="product-sort"
@@ -62,7 +66,9 @@ export default function ProductGrid({
         <select
           id="product-sort"
           value={sort}
-          onChange={(e) => setSort(e.target.value as SortOption)}
+          onChange={(e) =>
+            setSort(e.target.value as SortOption)
+          }
           className="rounded-lg border border-neutral-300 bg-white px-3 py-2 text-xs outline-none focus:border-green-600"
         >
           <option value="default">ডিফল্ট</option>
@@ -73,10 +79,9 @@ export default function ProductGrid({
       </div>
 
       <p className="mb-3 mt-4 text-xs text-neutral-500">
-        মোট {sortedProducts.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে
+        মোট {numberFormatter.format(sortedProducts.length)}টি পণ্য দেখানো হচ্ছে
       </p>
 
-      {/* Responsive product grid */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {sortedProducts.map((product) => (
           <Link
@@ -101,9 +106,11 @@ export default function ProductGrid({
 
             <div className="mt-3 flex items-end justify-between gap-2">
               <div>
-                <p className="text-xs text-neutral-500">আজকের দাম</p>
+                <p className="text-xs text-neutral-500">
+                  আজকের দাম
+                </p>
                 <p className="text-base font-bold text-[#202b22]">
-                  {product.today.toLocaleString("bn-BD")} টাকা
+                  {numberFormatter.format(product.today)} টাকা
                 </p>
               </div>
 
@@ -121,9 +128,9 @@ export default function ProductGrid({
                   : product.change.dir === "down"
                     ? "▼"
                     : "—"}{" "}
-                {Math.abs(product.change.pct).toLocaleString("bn-BD", {
-                  maximumFractionDigits: 1,
-                })}
+                {numberFormatter.format(
+                  Math.abs(product.change.pct)
+                )}
                 %
               </span>
             </div>

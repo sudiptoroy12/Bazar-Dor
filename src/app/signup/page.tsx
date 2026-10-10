@@ -3,6 +3,7 @@
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -45,10 +46,12 @@ const SignUpPage = () => {
     });
 
     if (data) {
+      toast.success("সফলভাবে অ্যাকাউন্ট তৈরি হয়েছে!");
       router.push("/");
     }
 
     if (error) {
+      toast.error(error.message || "অ্যাকাউন্ট তৈরি করা যায়নি");
       setErrorMessage(error.message || "অ্যাকাউন্ট তৈরি করা যায়নি");
     }
 
@@ -248,6 +251,15 @@ const SignUpPage = () => {
             </button>
           </p>
         </div>
+         {/* Back to Home */}
+        <button
+          type="button"
+          onClick={() => router.push("/")}
+          className="block mx-auto mt-5 text-sm text-gray-400
+          hover:text-gray-600 transition"
+        >
+          ← হোম পেজে ফিরে যান
+        </button>
       </div>
     </div>
   );

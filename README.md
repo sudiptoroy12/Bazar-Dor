@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🛒 বাজার দর | BazarDor
 
-First, run the development server:
+### Know Today's Market Prices at a Glance
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**বাজার দর (BazarDor)** is a web application that helps users explore daily market prices of essential products in Bangladesh. It provides a simple, user-friendly interface for checking product prices, comparing price changes, and browsing products by category.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 16** — React framework for building the web application
+- **React** — Component-based user interface
+- **TypeScript** — Type-safe development
+- **Tailwind CSS** — Responsive styling and UI design
+- **Better Auth** — Authentication and account management
+- **MongoDB** — Database for application data
+- **React Toastify** — Success and error notifications
+- **Vercel** — Deployment and hosting
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Key Features
 
-## Learn More
+1. **📊 Daily Market Prices**  
+   View today's prices of essential market products in one place.
 
-To learn more about Next.js, take a look at the following resources:
+2. **🔎 Category-Based Browsing**  
+   Browse products by category to find specific items easily.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **↕️ Product Sorting**  
+   Sort products by price from low to high, high to low, or by price change.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **📈 Price Change Indicators**  
+   Quickly identify whether a product's price has increased, decreased, or remained unchanged.
 
-## Deploy on Vercel
+5. **🔐 User Authentication**  
+   Create an account and sign in using email and password, Google, or GitHub.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🖥️ Getting Started
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Prerequisites
+
+- Node.js
+- npm
+- MongoDB database
+- Required authentication credentials for enabled OAuth providers
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <your-repository-url>
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd bazar-dor
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Create a `.env.local` file in the project root and configure the required environment variables:
+
+   ```env
+   MONGODB_URL=your_mongodb_connection_string
+
+   BETTER_AUTH_SECRET=your_better_auth_secret
+   BETTER_AUTH_URL=http://localhost:3000
+
+   GOOGLE_CLIENT_ID=your_google_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+   GITHUB_CLIENT_ID=your_github_client_id
+   GITHUB_CLIENT_SECRET=your_github_client_secret
+   ```
+
+5. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🌐 Live Demo
+
+[https://bazar-dor-ql1w.vercel.app/]
+
+## 👨‍💻 Author
+
+**Sudipto Roy**
+
+- GitHub: [(https://github.com/sudiptoroy12/Bazar-Dor)]
+
+---
+
+⭐ If you find this project useful, consider giving it a star!

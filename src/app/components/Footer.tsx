@@ -15,8 +15,8 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <p className="mt-4 text-center text-xs text-neutral-500 sm:text-sm">
-          &copy; 2026 BazarDor. All rights reserved.
+        <p className="mt-4 text-right text-xs text-neutral-500 sm:text-sm">
+          &copy; 2026 BazarDor- All rights reserved.
         </p>
       </div>
     </footer>
