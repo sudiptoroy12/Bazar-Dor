@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { SignupSkeleton } from "../components/SignupSkeleton";
+import { Eye, EyeOff } from "lucide-react";
 
 const SignUpPage = () => {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -148,22 +150,32 @@ const SignUpPage = () => {
               </div>
 
               {/* Password */}
-              <div>
+              <div >
                 <label
                   htmlFor="password"
                   className="mb-2 block text-sm font-medium text-gray-700"
                 >
                   পাসওয়ার্ড
                 </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  minLength={8}
-                  placeholder="কমপক্ষে ৮ অক্ষর"
-                  className="h-11 w-full rounded-lg border border-gray-200 px-4 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                />
+                <div className="relative">
+                  <input
+                    id="password"
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    required
+                    minLength={8}
+                    placeholder="কমপক্ষে ৮ অক্ষর"
+                    className="h-11 w-full rounded-lg border border-gray-200 px-4 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                 
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 transition hover:text-neutral-800"
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
               </div>
 
               {/* Confirm Password */}
@@ -174,15 +186,26 @@ const SignUpPage = () => {
                 >
                   পাসওয়ার্ড নিশ্চিত করুন
                 </label>
-                <input
+                <div className="relative">
+                    <input
                   id="confirmPassword"
                   name="confirmPassword"
-                  type="password"
+                  type= {showPassword ? "text" : "password"}
                   required
                   minLength={8}
                   placeholder="আবার লিখুন"
                   className="h-11 w-full rounded-lg border border-gray-200 px-4 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
                 />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                 
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 transition hover:text-neutral-800"
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
+              
               </div>
 
               {/* Inline error */}

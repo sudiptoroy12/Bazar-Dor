@@ -128,7 +128,7 @@ const ProfilePage = () => {
                   {user.name}
                 </h2>
 
-                <p className="mt-1 text-lg text-neutral-500">{user.email}</p>
+                <p className="mt-1 text-sm sm:text-lg text-neutral-500">{user.email}</p>
               </div>
             </div>
 
