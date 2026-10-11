@@ -53,7 +53,7 @@ const ProductDashboard = async () => {
     .slice(0, 6); // Limit to 6 products
 
   return (
-    <main className="mx-auto max-w-7xl space-y-7 px-4 py-6 sm:px-6">
+    <main className="mx-auto max-w-7xl space-y-7  px-4 py-6 sm:px-6 lg:px-8">
       <ProductGroup
         title="আজ দাম বেড়েছে"
         icon="▲"
