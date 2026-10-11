@@ -11,33 +11,44 @@ const SignInPage = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
 
-    setLoading(true);
+const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+  const form = e.currentTarget;
+  const formData = new FormData(form);
 
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
 
+  // Clear input fields after reading their values
+  form.reset();
+
+  setLoading(true);
+
+  try {
     const { data, error } = await authClient.signIn.email({
       email,
       password,
       callbackURL: "/",
     });
 
+    if (error) {
+      toast.error("ইমেইল অথবা পাসওয়ার্ড সঠিক নয়!");
+      return;
+    }
+
     if (data) {
       toast.success("সফলভাবে সাইন ইন হয়েছে!");
       router.push("/");
     }
-
-    if (error) {
-      toast.error("ইমেইল অথবা পাসওয়ার্ড সঠিক নয়!");
-    }
-
+  } catch {
+    toast.error("সাইন ইন করার সময় সমস্যা হয়েছে!");
+  } finally {
     setLoading(false);
-  };
+  }
+};
+
 
   // Google Login
   const handleGoogleLogin = async () => {

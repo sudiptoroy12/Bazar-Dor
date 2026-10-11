@@ -17,15 +17,19 @@ const SignUpPage = () => {
   const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setLoading(true);
-    setErrorMessage("");
-
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
     const confirmPassword = formData.get("confirmPassword") as string;
+
+    // Clear all input fields after reading their values
+    form.reset();
+
+    setLoading(true);
+    setErrorMessage("");
 
     // Check password
     if (password !== confirmPassword) {
@@ -40,25 +44,30 @@ const SignUpPage = () => {
       return;
     }
 
-    const { data, error } = await authClient.signUp.email({
-      name,
-      email,
-      password,
-      image: "",
-      callbackURL: "/",
-    });
+    try {
+      const { data, error } = await authClient.signUp.email({
+        name,
+        email,
+        password,
+        image: "",
+        callbackURL: "/",
+      });
 
-    if (data) {
-      toast.success("সফলভাবে অ্যাকাউন্ট তৈরি হয়েছে!");
-      router.push("/");
+      if (error) {
+        toast.error(error.message || "অ্যাকাউন্ট তৈরি করা যায়নি");
+        setErrorMessage(error.message || "অ্যাকাউন্ট তৈরি করা যায়নি");
+        return;
+      }
+
+      if (data) {
+        toast.success("সফলভাবে অ্যাকাউন্ট তৈরি হয়েছে!");
+        router.push("/");
+      }
+    } catch {
+      toast.error("অ্যাকাউন্ট তৈরি করার সময় সমস্যা হয়েছে");
+    } finally {
+      setLoading(false);
     }
-
-    if (error) {
-      toast.error(error.message || "অ্যাকাউন্ট তৈরি করা যায়নি");
-      setErrorMessage(error.message || "অ্যাকাউন্ট তৈরি করা যায়নি");
-    }
-
-    setLoading(false);
   };
 
   // Google Login
@@ -150,7 +159,7 @@ const SignUpPage = () => {
               </div>
 
               {/* Password */}
-              <div >
+              <div>
                 <label
                   htmlFor="password"
                   className="mb-2 block text-sm font-medium text-gray-700"
@@ -170,7 +179,6 @@ const SignUpPage = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword((prev) => !prev)}
-                 
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 transition hover:text-neutral-800"
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -187,25 +195,23 @@ const SignUpPage = () => {
                   পাসওয়ার্ড নিশ্চিত করুন
                 </label>
                 <div className="relative">
-                    <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type= {showPassword ? "text" : "password"}
-                  required
-                  minLength={8}
-                  placeholder="আবার লিখুন"
-                  className="h-11 w-full rounded-lg border border-gray-200 px-4 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                />
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type={showPassword ? "text" : "password"}
+                    required
+                    minLength={8}
+                    placeholder="আবার লিখুন"
+                    className="h-11 w-full rounded-lg border border-gray-200 px-4 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                  />
                   <button
                     type="button"
                     onClick={() => setShowPassword((prev) => !prev)}
-                 
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 transition hover:text-neutral-800"
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
                 </div>
-              
               </div>
 
               {/* Inline error */}
